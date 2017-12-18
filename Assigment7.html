@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 7</title>
+	<style type="text/css">
+		
+		.hint{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>Simple Sing-Up page</h1>
+	<span>Username:</span>
+	<input id = "username" type="text" name="name"> <span class="hint" id="feedbackusername"></span><br>
+	<span>Password:</span>
+	<input id ="Password" type="password" name="psw"> <span class="hint" id="feedbackpassword"></span><br>
+	<span>Confirm Password:</span>
+	<input id = "confirmPsw" type="password" name="psw"><span class="hint" id="feedbackConPsw"></span><br>
+	<span>Email:</span>
+	<input id = "email" type="email"><span class="hint" id="emialFeedback"></span>
+	<script>
+		
+		document.getElementById("username").onblur = function(){
+			var elmessage = document.getElementById("feedbackusername");
+			if(this.value.length< 8){
+				elmessage.textContent = "Username must be 8 characters or more";
+			} else{
+				elmessage.textContent ="";
+			}
+		};	
+		document.getElementById("Password").onblur = function(){
+			var elPswMsg = document.getElementById("feedbackpassword");
+			if(this.value.length< 8){
+				elPswMsg.textContent = "Username must be 8 characters or more";
+			} else{
+				elPwMsg.textContent ="";
+			}
+		}
+		document.getElementById("confirmPsw").onblur = function(){
+			var password = document.getElementById("Password").value;
+			if(this.value != password){
+				document.getElementById("feedbackConPsw").textContent ="Password and confirm Pasword is not match";
+			}else{
+				document.getElementById("feedbackConPsw").textContent ="Password Match"
+			}
+		};
+		document.getElementById("email").onblur = function(){
+			 var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+			if(reg.test(this.value)){
+				document.getElementById("emialFeedback").textContent ="it is a valid email address";
+			}else{
+				document.getElementById("emialFeedback").textContent ="it is a invalid email address";
+			}
+		};
+		
+		
+	</script>
+
+</body>
+</html>
